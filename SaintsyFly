@@ -1,7 +1,7 @@
 <?php
 /**
 declare(strict_types=1);
-namespace iiFlamiinBlaze\BlazinFly;
+namespace iiSaints83\SaintsyFly;
 use pocketmine\entity\Entity;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -13,7 +13,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\utils\TextFormat;
 class BlazinFly extends PluginBase implements Listener{
-	private const PREFIX = TextFormat::AQUA . "BlazinFly" . TextFormat::YELLOW . " > ";
+	private const PREFIX = TextFormat::AQUA . "SaintsyFly" . TextFormat::YELLOW . " > ";
 	private const VERSION = "v1.8.7";
 	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -48,7 +48,7 @@ class BlazinFly extends PluginBase implements Listener{
 				$sender->sendMessage(self::PREFIX . TextFormat::BLUE . "Use this command in-game");
 				return false;
 			}
-			if(!$sender->hasPermission("blazinfly.command")){
+			if(!$sender->hasPermission("saintsyfly.command")){
 				$sender->sendMessage(self::PREFIX . TextFormat::BLUE . "You do not have permission to use this command");
 				return false;
 			}
@@ -64,7 +64,7 @@ class BlazinFly extends PluginBase implements Listener{
 				}
 				return false;
 			}
-			if(!$sender->hasPermission("blazinfly.other")){
+			if(!$sender->hasPermission("saintsyfly.other")){
 				$sender->sendMessage(self::PREFIX . TextFormat::BLUE . "You do not have permission to enable flight for others");
 				return false;
 			}
