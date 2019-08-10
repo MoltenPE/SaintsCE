@@ -24,7 +24,7 @@ class BlazinFly extends PluginBase implements Listener{
 		if(!$entity instanceof Player) return false;
 		if($this->getConfig()->get("multi-world") === "on"){
 			if(!in_array($entity->getLevel()->getName(), $this->getConfig()->get("worlds"))){
-				$entity->sendMessage(self::PREFIX . TextFormat::BLUE . "You are not in the right world to be able to use the fly command");
+				$entity->sendMessage(self::PREFIX . TextFormat::RED . "You are not in the right world to be able to use the fly command");
 				if(!$entity->isCreative()){
 					$entity->setFlying(false);
 					$entity->setAllowFlight(false);
@@ -49,7 +49,7 @@ class BlazinFly extends PluginBase implements Listener{
 				return false;
 			}
 			if(!$sender->hasPermission("saintsyfly.command")){
-				$sender->sendMessage(self::PREFIX . TextFormat::BLUE . "You do not have permission to use this command");
+				$sender->sendMessage(self::PREFIX . TextFormat::RED . "You do not have permission to use this command");
 				return false;
 			}
 			if(empty($args[0])){
@@ -59,13 +59,13 @@ class BlazinFly extends PluginBase implements Listener{
 					$sender->setAllowFlight($sender->getAllowFlight() === false ? true : false);
 					$sender->setFlying($sender->isFlying() === false ? true : false);
 				}else{
-					$sender->sendMessage(self::PREFIX . TextFormat::BLUE . "You can only use this command in survival mode");
+					$sender->sendMessage(self::PREFIX . TextFormat::RED . "You can only use this command in survival mode");
 					return false;
 				}
 				return false;
 			}
 			if(!$sender->hasPermission("saintsyfly.other")){
-				$sender->sendMessage(self::PREFIX . TextFormat::BLUE . "You do not have permission to enable flight for others");
+				$sender->sendMessage(self::PREFIX . TextFormat::RED . "You do not have permission to enable flight for others");
 				return false;
 			}
 			if($this->getServer()->getPlayer($args[0])){
@@ -77,11 +77,11 @@ class BlazinFly extends PluginBase implements Listener{
 					$player->setAllowFlight($player->getAllowFlight() === false ? true : false);
 					$player->setFlying($player->isFlying() === false ? true : false);
 				}else{
-					$sender->sendMessage(self::PREFIX . TextFormat::BLUE . $player->getName() . " is in creative mode");
+					$sender->sendMessage(self::PREFIX . TextFormat::PURPLE . $player->getName() . " is in creative mode");
 					return false;
 				}
 			}else{
-				$sender->sendMessage(self::PREFIX . TextFormat::BLUE . "Player not found");
+				$sender->sendMessage(self::PREFIX . TextFormat::RED . "Player not found");
 				return false;
 			}
 		}
@@ -96,7 +96,7 @@ class BlazinFly extends PluginBase implements Listener{
 					if(!$damager instanceof Player) return;
 					if($damager->isCreative()) return;
 					if($damager->getAllowFlight() === true){
-						$damager->sendMessage(self::PREFIX . TextFormat::LIGHT_BLUE . "Flight mode disabled due to combat");
+						$damager->sendMessage(self::PREFIX . TextFormat::GOLD . "Flight mode disabled due to combat");
 						$damager->setAllowFlight(false);
 						$damager->setFlying(false);
 					}
